@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "mocha -r ts-node/register test/test.ts",
+    "test": "mocha -r ts-node/register test/**.ts",
     "test:debug": "nodemon --config nodemon-test.json",
     "start:debug": "nodemon --config nodemon-debug.json"
   },
