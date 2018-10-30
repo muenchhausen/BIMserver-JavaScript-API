@@ -1,6 +1,10 @@
 import {expect} from 'chai'
 import {BimServerClient} from "../bimserverclient";
 
+import chai = require("chai");
+import chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
+
 describe('BimServerClient', () => {
 
     it('promised tests without chai-as-promised work in general', function () {
@@ -16,7 +20,9 @@ describe('BimServerClient', () => {
         ;
         return p;
     });
-
+    it("ch-as-promised tests work in general", () => {
+        return expect(Promise.resolve('bim')).to.eventually.equal('bim');
+    });
     it('should return server information', function () {
         return new Promise((resolve, reject) => {
 
@@ -38,12 +44,10 @@ describe('BimServerClient', () => {
             })
             ;
     });
-/*
-    it('should login with correct version', (done) => {
+
+    it('should login with correct version', () => {
 
         return new Promise((resolve, reject) => {
-            setTimeout(() => reject(new Error("timeout")), 10000);
-
             let bimserverapi = new BimServerClient("http://localhost:8082");
 
             bimserverapi.login("derk@muenchhausen.de", "test", (data) => {
@@ -51,14 +55,10 @@ describe('BimServerClient', () => {
             }, (m) => {
                 throw new Error(JSON.stringify(m));
             });
-
-        }).then((data) => {
-            expect(JSON.stringify(data)).to.contain("validationToken");
-        }).catch((m) => {
-            throw new Error('login failed ' + m);
         });
     });
-*/
+
+
     /*
     it('should return server information', () => {
 

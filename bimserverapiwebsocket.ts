@@ -1,3 +1,5 @@
+const WebSocket = require('ws')
+
 class BimServerApiWebSocket {
 	connected: boolean;
     openCallbacks: any[];
