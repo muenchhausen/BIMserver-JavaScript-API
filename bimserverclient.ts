@@ -1,12 +1,12 @@
-import { BimServerApiPromise } from './bimserverapipromise';
-import { BimServerApiWebSocket} from './bimserverapiwebsocket';
-import { geometry } from './geometry';
-import { ifc2x3tc1 } from './ifc2x3tc1';
-import { ifc4 } from './ifc4';
-import { Model } from './model';
-import { translations } from './translations_en';
+import { BimServerApiPromise } from "./bimserverapipromise";
+import { BimServerApiWebSocket} from "./bimserverapiwebsocket";
+import { geometry } from "./geometry";
+import { ifc2x3tc1 } from "./ifc2x3tc1";
+import { ifc4 } from "./ifc4";
+import { Model } from "./model";
+import { translations } from "./translations_en";
 
-import { XMLHttpRequest } from 'xhr2';
+import { XMLHttpRequest } from "xhr2";
 
 // Where does this come frome? The API crashes on the absence of this
 // member function?

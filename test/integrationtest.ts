@@ -1,8 +1,8 @@
-import {expect} from 'chai'
+import {expect} from "chai";
 import {BimServerClient} from "../bimserverclient";
 
-import chai = require("chai");
-import chaiAsPromised = require("chai-as-promised");
+import chai from "chai";
+import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 
 describe('BimServerClient', () => {
@@ -20,7 +20,7 @@ describe('BimServerClient', () => {
         ;
         return p;
     });
-    it("ch-as-promised tests work in general", () => {
+    it("chai-as-promised tests work in general", () => {
         return expect(Promise.resolve('bim')).to.eventually.equal('bim');
     });
     it('should return server information', function () {
