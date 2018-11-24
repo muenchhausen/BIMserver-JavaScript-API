@@ -1,5 +1,4 @@
 import {expect} from "chai";
-import {BimServerClient} from "../../bimserverclient";
 
 import chai from "chai";
 import chaiAsPromised from "chai-as-promised";

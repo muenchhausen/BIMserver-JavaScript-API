@@ -12,10 +12,10 @@
   "scripts": {
     "build": "tsc",
     "test:debug": "nodemon --config nodemon-test.json",
-    "test": "npm run test:unit && npm run test:int",
-    "test:unit": "mocha -r ts-node/register test/unit/**/*.spec.ts --opts ./mocha.opts",
-    "test:int": "mocha -r ts-node/register test/int/**/*.spec.ts --opts ./mocha.opts --timeout 10000",
-
+    "test": "nyc mocha test/unit/*.spec.ts test/int/*.spec.ts",
+    "test:unit": "nyc mocha test/unit/*.spec.ts",
+    "test:int": "nyc mocha test/int/*.spec.ts",
+    "coverage": "nyc report",
     "start:debug": "nodemon --config nodemon-debug.json"
   },
   "files": [
@@ -23,7 +23,7 @@
   ],
   "main": "dist/bimserverapi.js",
   "types": "dist/bimserverapi.d.ts",
-  "module": "bimserverclient.js",
+  "module": "bimserverclient.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/opensourceBIM/BIMserver-JavaScript-API"
@@ -65,7 +65,27 @@
     "ts-node": "^7.0.1",
     "tsconfig-paths": "^3.6.0",
     "typescript": "^3.1.3",
-    "ws": "^6.1.0"
+    "ws": "^6.1.0",
+    "nyc": "^13.0.1",
+    "source-map-support": "^0.5.5"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "*.ts"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "all": true,
+    "check-coverage": true,
+    "statements": 10,
+    "functions": 10,
+    "branches": 10,
+    "lines": 10
   },
   "preferGlobal": true,
   "private": false,
