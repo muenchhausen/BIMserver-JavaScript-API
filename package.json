@@ -82,10 +82,10 @@
     ],
     "all": true,
     "check-coverage": true,
-    "statements": 10,
-    "functions": 10,
-    "branches": 10,
-    "lines": 10
+    "statements": 0,
+    "functions": 0,
+    "branches": 0,
+    "lines": 0
   },
   "preferGlobal": true,
   "private": false,
