@@ -10,7 +10,7 @@ describe("BimServerClient", () => {
     it("should return server information", function () {
         return new Promise((resolve, reject) => {
 
-            let bimserverapi = new BimServerClient("http://localhost:8082");
+            let bimserverapi = new BimServerClient("http://localhost:8888");
 
             bimserverapi.call("AdminInterface", "getSystemInfo", {}, (data) => {
                 resolve(data);
@@ -29,9 +29,9 @@ describe("BimServerClient", () => {
 
         return new Promise((resolve, reject) => {
 
-            let bimserverapi = new BimServerClient("http://localhost:8082");
+            let bimserverapi = new BimServerClient("http://localhost:8888");
 
-            bimserverapi.login("derk@muenchhausen.de", "test2", (data) => {
+            bimserverapi.login("derk@muenchhausen.de", "wrong", (data) => {
                 reject(JSON.stringify(data));
             }, (m) => {
                 resolve(JSON.stringify(m));
@@ -46,9 +46,9 @@ describe("BimServerClient", () => {
     it("should login with correct version", () => {
 
         return new Promise((resolve, reject) => {
-            let bimserverapi = new BimServerClient("http://localhost:8082");
+            let bimserverapi = new BimServerClient("http://localhost:8888");
 
-            bimserverapi.login("derk@muenchhausen.de", "test", (data) => {
+            bimserverapi.login("derk@muenchhausen.de", "admin", (data) => {
                 resolve(data);
             }, (m) => {
                 reject(m);

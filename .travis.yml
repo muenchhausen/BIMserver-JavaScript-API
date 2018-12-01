@@ -1,14 +1,16 @@
-matrix:
-  include:
-  #- language: java
-  #  jdk: oraclejdk8
-  #  script:
-  #  - java -version
+language: node_js
+node_js:
+  - "10"
 
-  - language: node_js
-    node_js:
-    - "10"
-    install:
-    - npm install
-    script:
-    - npm run test:unit
+services:
+  - docker
+
+before_install:
+  - docker pull muenchhausen/docker-bimserver
+  - docker run --rm -it -p 8888:8080 muenchhausen/docker-bimserver
+  - docker ps -a
+  # set sample user and credentials
+  - curl 'http://localhost:8888/json' --retry 3 --retry-delay 5 -H 'Origin: http://localhost:8888' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-US,en;q=0.9' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36' -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Referer: http://localhost:8888/' -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' --data '{"request":{"interface":"AdminInterface","method":"setup","parameters":{"siteAddress":"http://localhost:8888","serverName":"","serverDescription":"","serverIcon":"/img/bimserver.png","adminName":"Administrator","adminUsername":"derk@muenchhausen.de","adminPassword":"admin"}}}' --compressed
+
+script:
+  - npm run test
